@@ -24,33 +24,6 @@ function calculateMooches(date) {
     return moochesUntilElection;
 }
 
-async function fetchQuotes() {
-    try {
-        const response = await fetch('quotes.csv');
-        const data = await response.text();
-        
-        // Parse CSV content using PapaParse
-        const parsedData = Papa.parse(data, {
-            header: false,
-            skipEmptyLines: true
-        });
-
-        // Extract the second column
-        const quotes = parsedData.data.map(row => row[1]).filter(quote => quote);
-
-        // Select a random quote
-        let quote = quotes[Math.floor(Math.random() * quotes.length)];
-
-        // Sanitize the quote
-        quote = quote.replace(/"/g, ''); // Remove all quotation marks
-
-        return quote;
-    } catch (error) {
-        console.error('Error fetching quotes:', error);
-        return 'An error occurred while fetching the quote.';
-    }
-}
-
 document.addEventListener('DOMContentLoaded', async (event) => {
     const currentDate = new Date();
     const electionDate = new Date('2026-11-03T00:00:00'); // Election date in local time
@@ -79,9 +52,5 @@ document.addEventListener('DOMContentLoaded', async (event) => {
 
         updateMooches();
         setInterval(updateMooches, 1000);
-
-        const quote = await fetchQuotes();
-        const quoteElement = document.getElementById('quote');
-        quoteElement.textContent = quote;
     }
 });
