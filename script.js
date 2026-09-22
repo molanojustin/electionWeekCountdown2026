@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', async (event) => {
         // Embed the video
         const contentElement = document.getElementById('content');
         contentElement.innerHTML = `
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/jt6riM2aDLk?si=_WfQIVdj97cJDAA-&amp;start=18" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/jt6riM2aDLk?start=18" title="YouTube video player" loading="lazy" style="border: 0;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         `;
     } else {
         const date = currentDate.toISOString().slice(5, 10); // Get current date in MM-DD format
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', async (event) => {
         function updateMooches() {
             const currentDateTime = new Date().toISOString();
             const moochesUntilElection = calculateMooches(currentDateTime);
-            moochesElement.innerHTML = `Mooche${moochesUntilElection !== 1 ? 's' : ''}<sup style="font-size: 3vw;"><a href="https://www.nbcnews.com/politics/politics-news/scaramucci-sets-new-record-shortest-term-communications-director-n788281" target="_blank" style="text-decoration: none;">*</a></sup>: ${moochesUntilElection}`;
+            moochesElement.innerHTML = `Mooche${moochesUntilElection !== 1 ? 's' : ''}<sup style="font-size: 3vw;"><a href="https://www.nbcnews.com/politics/politics-news/scaramucci-sets-new-record-shortest-term-communications-director-n788281" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">*</a></sup>: ${moochesUntilElection}`;
         }
 
         updateMooches();
