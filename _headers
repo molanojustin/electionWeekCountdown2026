@@ -1,0 +1,22 @@
+# Security response headers.
+#
+# This file is read by Cloudflare Pages and Netlify. It is ignored by
+# GitHub Pages, which cannot set custom response headers at all -- if the
+# origin is GitHub Pages, set these at the Cloudflare edge instead (SSL/TLS
+# -> Edge Certificates for HSTS, or a Transform Rule -> Modify Response
+# Header for the rest).
+#
+# Permissions-Policy deliberately leaves autoplay, encrypted-media,
+# picture-in-picture, clipboard-write, accelerometer and gyroscope alone:
+# denying them here would override the post-election video embed's own
+# allow= attribute and break playback.
+
+/*
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; frame-src https://www.youtube-nocookie.com; base-uri 'none'; form-action 'none'; object-src 'none'; frame-ancestors 'none'; upgrade-insecure-requests
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), browsing-topics=()
+  Cross-Origin-Opener-Policy: same-origin
+  Cross-Origin-Resource-Policy: same-origin
