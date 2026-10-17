@@ -16,12 +16,12 @@ function calculateDaysUntilElection(currentDate, electionDate) {
     return diffDays;
 }
 
-function calculateMooches(date) {
+function calculateZacharias(date) {
     const electionDate = new Date('2026-11-03T00:00:00');
     let inputDate = new Date(date);
     const secondsUntilElection = Math.ceil((electionDate - inputDate) / 1000);
-    const moochesUntilElection = (secondsUntilElection / (15840*60)).toFixed(6);
-    return moochesUntilElection;
+    const zachariasUntilElection = (secondsUntilElection / (5 * 24 * 60 * 60)).toFixed(6);
+    return zachariasUntilElection;
 }
 
 document.addEventListener('DOMContentLoaded', async (event) => {
@@ -40,17 +40,17 @@ document.addEventListener('DOMContentLoaded', async (event) => {
         const daysUntilElection = calculateDaysUntilElection(currentDate, electionDate);
         const countdownElement = document.getElementById('countdown');
         const daysElement = document.getElementById('days');
-        const moochesElement = document.getElementById('mooches');
+        const zachariasElement = document.getElementById('zacharias');
         countdownElement.textContent = `Week: ${weeksUntilElection}`;
         daysElement.textContent = `Day: ${daysUntilElection}`;
 
-        function updateMooches() {
+        function updateZacharias() {
             const currentDateTime = new Date().toISOString();
-            const moochesUntilElection = calculateMooches(currentDateTime);
-            moochesElement.innerHTML = `Mooche${moochesUntilElection !== 1 ? 's' : ''}<sup style="font-size: 3vw;"><a href="https://www.nbcnews.com/politics/politics-news/scaramucci-sets-new-record-shortest-term-communications-director-n788281" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">*</a></sup>: ${moochesUntilElection}`;
+            const zachariasUntilElection = calculateZacharias(currentDateTime);
+            zachariasElement.innerHTML = `Zacharia${zachariasUntilElection !== 1 ? 's' : ''}<sup style="font-size: 3vw;"><a href="https://www.nytimes.com/2026/10/16/us/politics/katie-zacharia-fired-press-secretary.html" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">*</a></sup>: ${zachariasUntilElection}`;
         }
 
-        updateMooches();
-        setInterval(updateMooches, 1000);
+        updateZacharias();
+        setInterval(updateZacharias, 1000);
     }
 });
